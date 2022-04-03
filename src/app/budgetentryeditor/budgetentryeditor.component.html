@@ -1,0 +1,25 @@
+<app-modalcontainer>
+    <table class="table" *ngIf="entries != null && entries.length > 0">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of entries; index as i">
+                <td><input type="text" class="form-control" placeholder="Name" [(ngModel)]="entry.name"></td>
+                <td><input type="number" class="form-control" placeholder="Amount" [(ngModel)]="entry.amount"></td>
+                <td><a class="bi-trash-fill icon-button" href="javascript:void(0)" (click)="remove(i)"></a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th><button class="btn btn-primary" (click)="addEntry()">Add entry</button></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</app-modalcontainer>

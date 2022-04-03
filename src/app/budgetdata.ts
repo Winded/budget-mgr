@@ -15,3 +15,14 @@ export interface BudgetData {
 export function sum(budgetEntryList: Array<BudgetEntry>): number {
     return budgetEntryList.reduce<number>((current, entry) => current + entry.amount, 0);
 }
+
+export function copyList(budgetEntryList: Array<BudgetEntry>) : Array<BudgetEntry> {
+    let result: Array<BudgetEntry> = [];
+    for (let entry of budgetEntryList) {
+        result.push({
+        name: entry.name,
+        amount: entry.amount,
+        });
+    }
+    return result;
+}

@@ -4,15 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BudgetEntryTableComponent } from './budgetentrytable/budgetentrytable.component';
 import { ModalContainerComponent } from './modalcontainer/modalcontainer.component';
+import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BudgetEntryTableComponent,
-    ModalContainerComponent
+    ModalContainerComponent,
+    BudgetEntryEditorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,12 +10,12 @@
     <div class="row">
 
       <div class="col">
-        <h2>Monthly Income <a class="bi-pencil-fill icon-button" href="#" (click)="openIncomeEditor()"></a></h2>
+        <h2>Monthly Income <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openIncomeEditor()"></a></h2>
         <app-budgetentrytable [data]="data.income"></app-budgetentrytable>
       </div>
 
       <div class="col">
-        <h2>Monthly Expenses <a class="bi-pencil-fill icon-button" href="#"></a></h2>
+        <h2>Monthly Expenses <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openExpensesEditor()"></a></h2>
         <app-budgetentrytable [data]="data.expenses"></app-budgetentrytable>
       </div>
 
@@ -31,9 +31,9 @@
   
   </div>
   
-  <div *ngElse>
+  <div *ngIf="data == null">
     Loading...
   </div>
 </div>
 
-<app-modalcontainer></app-modalcontainer>
+<app-budgetentryeditor></app-budgetentryeditor>

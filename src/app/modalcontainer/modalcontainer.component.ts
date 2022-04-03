@@ -27,4 +27,8 @@ export class ModalContainerComponent {
     this._visible = false;
   }
 
+  save() {
+    this._visible = false;
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { BudgetData, sum } from './budgetdata';
+import { BudgetData, copyList, sum } from './budgetdata';
 import { BudgetDataSourceService } from './budgetdatasource.service';
-import { ModalContainerComponent } from './modalcontainer/modalcontainer.component';
+import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { ModalContainerComponent } from './modalcontainer/modalcontainer.compone
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild(ModalContainerComponent)
-  private modalContainer!: ModalContainerComponent;
+  @ViewChild(BudgetEntryEditorComponent)
+  private budgetEntryEditor!: BudgetEntryEditorComponent;
 
   data : BudgetData|null = null;
 
@@ -23,6 +23,10 @@ export class AppComponent {
   }
 
   openIncomeEditor() {
-    this.modalContainer.open('Income editor');
+    this.budgetEntryEditor.open('Income editor', copyList(this.data!.income));
+  }
+
+  openExpensesEditor() {
+    this.budgetEntryEditor.open('Expenses editor', copyList(this.data!.expenses));
   }
 }
