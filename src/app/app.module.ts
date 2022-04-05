@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -7,6 +7,7 @@ import { ModalContainerComponent } from './modalcontainer/modalcontainer.compone
 import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
 import { FormsModule } from '@angular/forms';
 import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
+import { CurrencyPipe } from './currency.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NumberEditorModalComponent } from './numbereditormodal/numbereditormoda
     BudgetEntryTableComponent,
     ModalContainerComponent,
     BudgetEntryEditorComponent,
-    NumberEditorModalComponent
+    NumberEditorModalComponent,
+    CurrencyPipe
   ],
   imports: [
     BrowserModule,

@@ -21,13 +21,13 @@
 
     </div>
     
-    <h2>Monthly Surplus/Deficit: {{ getSurplus() }}</h2>
+    <h2>Monthly Surplus/Deficit: {{ getSurplus() | currency }}</h2>
     
     <h2>Account balance</h2>
   
-    <p>Current balance: {{ data.balance }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openBalanceEditor()"></a></p>
-    <p>Emergency buffer: {{ data.emergencyBuffer }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openEmergencyBufferEditor()"></a></p>
-    <p>Leftover balance: {{ data.balance - data.emergencyBuffer }}</p>
+    <p>Current balance: {{ data.balance | currency }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openBalanceEditor()"></a></p>
+    <p>Emergency buffer: {{ data.emergencyBuffer | currency }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openEmergencyBufferEditor()"></a></p>
+    <p>Leftover balance: {{ data.balance - data.emergencyBuffer | currency }}</p>
   
   </div>
   

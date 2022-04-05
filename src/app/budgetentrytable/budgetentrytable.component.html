@@ -8,13 +8,13 @@
     <tbody>
         <tr *ngFor="let incomeEntry of data">
             <td>{{ incomeEntry.name }}</td>
-            <td>{{ incomeEntry.amount }}</td>
+            <td>{{ incomeEntry.amount | currency }}</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <th>Total</th>
-            <th>{{ getTotal() }}</th>
+            <th>{{ getTotal() | currency }}</th>
         </tr>
     </tfoot>
 </table>
