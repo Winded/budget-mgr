@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./modalcontainer.component.css']
 })
 export class ModalContainerComponent {
+  onSave : CallableFunction = () => {};
+
   private _visible: boolean = false;
   private _title: string = "Modal";
 
@@ -28,7 +30,7 @@ export class ModalContainerComponent {
   }
 
   save() {
-    this._visible = false;
+    this.onSave();
   }
 
 }

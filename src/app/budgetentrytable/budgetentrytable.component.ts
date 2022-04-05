@@ -6,13 +6,10 @@ import { BudgetEntry, sum } from '../budgetdata';
   templateUrl: './budgetentrytable.component.html',
   styleUrls: ['./budgetentrytable.component.css']
 })
-export class BudgetEntryTableComponent implements OnInit {
+export class BudgetEntryTableComponent {
   @Input() data : Array<BudgetEntry> = [];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   getTotal(): number {
     return sum(this.data);
