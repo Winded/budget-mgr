@@ -25,8 +25,8 @@
     
     <h2>Account balance</h2>
   
-    <p>Current balance: {{ data.balance }}</p>
-    <p>Emergency buffer: {{ data.emergencyBuffer }}</p>
+    <p>Current balance: {{ data.balance }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openBalanceEditor()"></a></p>
+    <p>Emergency buffer: {{ data.emergencyBuffer }} <a class="bi-pencil-fill icon-button" href="javascript:void(0)" (click)="openEmergencyBufferEditor()"></a></p>
     <p>Leftover balance: {{ data.balance - data.emergencyBuffer }}</p>
   
   </div>
@@ -37,3 +37,4 @@
 </div>
 
 <app-budgetentryeditor></app-budgetentryeditor>
+<app-numbereditormodal></app-numbereditormodal>

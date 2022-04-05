@@ -6,13 +6,15 @@ import { BudgetEntryTableComponent } from './budgetentrytable/budgetentrytable.c
 import { ModalContainerComponent } from './modalcontainer/modalcontainer.component';
 import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
 import { FormsModule } from '@angular/forms';
+import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BudgetEntryTableComponent,
     ModalContainerComponent,
-    BudgetEntryEditorComponent
+    BudgetEntryEditorComponent,
+    NumberEditorModalComponent
   ],
   imports: [
     BrowserModule,
