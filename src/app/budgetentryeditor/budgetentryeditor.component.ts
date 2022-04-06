@@ -11,7 +11,7 @@ export class BudgetEntryEditorComponent implements AfterViewInit {
   @ViewChild(ModalContainerComponent)
   private modalContainer!: ModalContainerComponent;
 
-  private onSave: CallableFunction = () => {};
+  private onSave: () => void = () => {};
 
   entries: Array<BudgetEntry> = [];
 
@@ -21,7 +21,7 @@ export class BudgetEntryEditorComponent implements AfterViewInit {
     this.modalContainer.onSave = () => this.save();
   }
 
-  open(title: string, budgetEntryList: Array<BudgetEntry>, onSave: CallableFunction): void {
+  open(title: string, budgetEntryList: Array<BudgetEntry>, onSave: () => void): void {
     this.modalContainer.open(title);
     this.entries = budgetEntryList;
     this.onSave = onSave;

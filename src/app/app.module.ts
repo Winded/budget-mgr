@@ -8,6 +8,7 @@ import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryedito
 import { FormsModule } from '@angular/forms';
 import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
 import { CurrencyPipe } from './currency.pipe';
+import { CurrencyMenuComponent } from './currencymenu/currencymenu.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CurrencyPipe } from './currency.pipe';
     ModalContainerComponent,
     BudgetEntryEditorComponent,
     NumberEditorModalComponent,
-    CurrencyPipe
+    CurrencyPipe,
+    CurrencyMenuComponent
   ],
   imports: [
     BrowserModule,

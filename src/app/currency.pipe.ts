@@ -1,12 +1,14 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
 import { CurrencyService } from './currency.service';
 
 @Pipe({
-  name: 'currency'
+  name: 'currency',
+  pure: false
 })
 export class CurrencyPipe implements PipeTransform {
 
-  constructor(private currencyService: CurrencyService) {
+  constructor(private _ref: ChangeDetectorRef, private currencyService: CurrencyService) {
+    this.currencyService.subscriptions.push(() => this._ref.markForCheck());
   }
 
   transform(value: unknown, ...args: unknown[]): unknown {

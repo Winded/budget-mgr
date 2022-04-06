@@ -10,7 +10,7 @@ export class NumberEditorModalComponent implements AfterViewInit {
   @ViewChild(ModalContainerComponent)
   private modalContainer!: ModalContainerComponent;
 
-  private onSave: CallableFunction = () => {};
+  private onSave: () => void = () => {};
 
   value: number = 0;
 
@@ -20,7 +20,7 @@ export class NumberEditorModalComponent implements AfterViewInit {
     this.modalContainer.onSave = () => this.save();
   }
 
-  open(title: string, value: number, onSave: CallableFunction) {
+  open(title: string, value: number, onSave: () => void) {
     this.modalContainer.open(title);
     this.value = value;
     this.onSave = onSave;

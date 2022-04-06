@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { BudgetData, copyList, sum } from './budgetdata';
 import { BudgetDataSourceService } from './budgetdatasource.service';
 import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
+import { CurrencyService } from './currency.service';
 import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
 
 enum BudgetEditorType {
