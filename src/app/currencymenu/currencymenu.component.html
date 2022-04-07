@@ -3,7 +3,7 @@
         {{ currentCurrency }}
     </a>
     
-    <ul class="dropdown-menu show" *ngIf="visible">
+    <ul class="dropdown-menu dropdown-menu-end show" style="inset: 30px 0px auto auto;" *ngIf="visible">
         <li *ngFor="let option of currencyOptions">
             <a class="dropdown-item" href="javascript:void(0)" (click)="select(option.value)">{{ option.name }}</a>
         </li>

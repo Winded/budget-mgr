@@ -5,6 +5,15 @@
     color: var(--bs-secondary);
 }
 
+.icon-button.small {
+    font-size: var(--bs-body-font-size);
+}
+
 .modal-with-bg {
     background-color: rgba(0, 0, 0, 100);
+}
+
+.navbar {
+    margin-bottom: 10px;
+    box-shadow: 0 1px 5px #555555;
 }
