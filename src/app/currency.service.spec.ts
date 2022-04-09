@@ -32,4 +32,8 @@ describe('CurrencyService', () => {
     expect(service.format(123)).toBe("$123");
     expect(service.format(1425156)).toBe("$1,425,156");
   });
+
+  afterAll(() => {
+    window.localStorage.removeItem('Currency');
+  });
 });

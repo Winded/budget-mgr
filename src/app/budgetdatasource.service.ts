@@ -35,16 +35,8 @@ export class BudgetDataSourceService {
     return this.data!;
   }
 
-  public save() : Promise<void> {
-    return new Promise((resolve, reject) => {
-      let json = JSON.stringify(this.data);
-      try {
-        window.localStorage.setItem('BudgetData', json);
-        resolve();
-      } catch(ex) {
-        console.error(ex);
-        reject(ex);
-      }
-    });
+  public async save() : Promise<void> {
+    let json = JSON.stringify(this.data);
+    window.localStorage.setItem('BudgetData', json);
   }
 }
