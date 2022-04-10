@@ -1,4 +1,4 @@
-import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
 import { CurrencyPipe } from './currency.pipe';
 import { CurrencyMenuComponent } from './currencymenu/currencymenu.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { CurrencyMenuComponent } from './currencymenu/currencymenu.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/budget-mgr/' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
