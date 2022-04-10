@@ -9,7 +9,7 @@ interface CurrencyOption {
 @Component({
   selector: 'app-currencymenu',
   templateUrl: './currencymenu.component.html',
-  styleUrls: ['./currencymenu.component.css']
+  styleUrls: []
 })
 export class CurrencyMenuComponent {
   currencyOptions: Array<CurrencyOption> = [

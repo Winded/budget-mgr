@@ -5,7 +5,7 @@ import { ModalContainerComponent } from '../modalcontainer/modalcontainer.compon
 @Component({
   selector: 'app-budgetentryeditor',
   templateUrl: './budgetentryeditor.component.html',
-  styleUrls: ['./budgetentryeditor.component.css']
+  styleUrls: []
 })
 export class BudgetEntryEditorComponent implements AfterViewInit {
   @ViewChild(ModalContainerComponent)

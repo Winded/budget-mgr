@@ -4,7 +4,7 @@ import { ModalContainerComponent } from '../modalcontainer/modalcontainer.compon
 @Component({
   selector: 'app-numbereditormodal',
   templateUrl: './numbereditormodal.component.html',
-  styleUrls: ['./numbereditormodal.component.css']
+  styleUrls: []
 })
 export class NumberEditorModalComponent implements AfterViewInit {
   @ViewChild(ModalContainerComponent)

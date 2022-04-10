@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-modalcontainer',
   templateUrl: './modalcontainer.component.html',
-  styleUrls: ['./modalcontainer.component.css']
+  styleUrls: []
 })
 export class ModalContainerComponent {
   onSave : CallableFunction = () => {};

@@ -4,7 +4,7 @@ import { BudgetEntry, sum } from '../budgetdata';
 @Component({
   selector: 'app-budgetentrytable',
   templateUrl: './budgetentrytable.component.html',
-  styleUrls: ['./budgetentrytable.component.css']
+  styleUrls: []
 })
 export class BudgetEntryTableComponent {
   @Input() data : Array<BudgetEntry> = [];
