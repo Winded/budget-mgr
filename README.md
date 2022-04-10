@@ -1,6 +1,6 @@
 # BudgetMgr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+Calculate income, expenses, account balance and emergency funds. Made with Angular, uses browser's local storage to save settings.
 
 ## Development server
 
