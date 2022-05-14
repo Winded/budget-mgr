@@ -17,6 +17,6 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
 # Install chrome dependencies
 RUN apt-get update && apt-get -y install \
-    libxpm4 libxrender1 libgtk2.0-0 libatk-bridge-2.0-0 libnss3 libgconf-2-4 xvfb \
+    libxpm4 libxrender1 libgtk2.0-0 libatk-bridge2.0-0 libnss3 libgconf-2-4 xvfb \
     gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi \
     xfonts-base xfonts-scalable libxkbcommon0 libgbm1 libasound2
