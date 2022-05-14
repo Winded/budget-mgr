@@ -6,7 +6,7 @@ import { ModalContainerComponent } from '../modalcontainer/modalcontainer.compon
 @Component({
   selector: 'app-budgetentryeditor',
   templateUrl: './budgetentryeditor.component.html',
-  styleUrls: []
+  styleUrls: ['./budgetentryeditor.component.css']
 })
 export class BudgetEntryEditorComponent {
   @ViewChild(ModalContainerComponent)
@@ -26,6 +26,26 @@ export class BudgetEntryEditorComponent {
     this._onSave?.complete();
     this._onSave = new Subject<Array<BudgetEntry>>();
     return this._onSave;
+  }
+
+  moveUp(index: number) {
+    if (index <= 0) {
+      return;
+    }
+
+    let otherEntry = this.entries[index - 1];
+    this.entries[index - 1] = this.entries[index];
+    this.entries[index] = otherEntry;
+  }
+
+  moveDown(index: number) {
+    if (index >= this.entries.length - 1) {
+      return;
+    }
+
+    let otherEntry = this.entries[index + 1];
+    this.entries[index + 1] = this.entries[index];
+    this.entries[index] = otherEntry;
   }
 
   remove(index: number) {

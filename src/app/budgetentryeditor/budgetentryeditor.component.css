@@ -1,0 +1,9 @@
+.row-buttons {
+    min-width: 100px;
+    padding: 12px;
+}
+
+.row-buttons > a {
+    padding-right: 5px;
+    font-size: 20px;
+}

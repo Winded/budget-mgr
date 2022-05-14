@@ -11,7 +11,11 @@
             <tr *ngFor="let entry of entries; index as i">
                 <td><input type="text" class="form-control" placeholder="Name" [(ngModel)]="entry.name"></td>
                 <td><input type="number" class="form-control" placeholder="Amount" [(ngModel)]="entry.amount"></td>
-                <td><a class="bi-trash-fill icon-button" href="javascript:void(0)" (click)="remove(i)"></a></td>
+                <td class="row-buttons">
+                    <a class="bi-arrow-up-square-fill icon-button" href="javascript:void(0)" (click)="moveUp(i)"></a>
+                    <a class="bi-arrow-down-square-fill icon-button" href="javascript:void(0)" (click)="moveDown(i)"></a>
+                    <a class="bi-trash-fill icon-button" href="javascript:void(0)" (click)="remove(i)"></a>
+                </td>
             </tr>
         </tbody>
         <tfoot>
