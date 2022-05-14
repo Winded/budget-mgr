@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { BudgetEntry, copyList } from '../budgetdata';
 import { ModalContainerComponent } from '../modalcontainer/modalcontainer.component';
 
@@ -7,24 +8,24 @@ import { ModalContainerComponent } from '../modalcontainer/modalcontainer.compon
   templateUrl: './budgetentryeditor.component.html',
   styleUrls: []
 })
-export class BudgetEntryEditorComponent implements AfterViewInit {
+export class BudgetEntryEditorComponent {
   @ViewChild(ModalContainerComponent)
-  private modalContainer!: ModalContainerComponent;
+  private _modalContainer!: ModalContainerComponent;
 
-  private onSave: () => void = () => {};
+  private _onSave?: Subject<Array<BudgetEntry>>;
 
   entries: Array<BudgetEntry> = [];
 
   constructor() {}
 
-  ngAfterViewInit(): void {
-    this.modalContainer.onSave = () => this.save();
-  }
+  open(title: string, budgetEntryList: ReadonlyArray<BudgetEntry>): Observable<Array<BudgetEntry>> {
+    this._modalContainer.title = title;
+    this._modalContainer.visible = true;
+    this.entries = copyList(budgetEntryList);
 
-  open(title: string, budgetEntryList: Array<BudgetEntry>, onSave: () => void): void {
-    this.modalContainer.open(title);
-    this.entries = budgetEntryList;
-    this.onSave = onSave;
+    this._onSave?.complete();
+    this._onSave = new Subject<Array<BudgetEntry>>();
+    return this._onSave;
   }
 
   remove(index: number) {
@@ -38,8 +39,11 @@ export class BudgetEntryEditorComponent implements AfterViewInit {
     });
   }
 
-  private save() : void {
-    this.modalContainer.close();
-    this.onSave();
+  save() : void {
+    this._modalContainer.visible = false;
+    if (this._onSave) {
+      this._onSave.next(copyList(this.entries));
+      this._onSave.complete();
+    }
   }
 }

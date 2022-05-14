@@ -1,4 +1,4 @@
-<app-modalcontainer>
+<app-modalcontainer (onSave)="save()">
     <table class="table" *ngIf="entries != null && entries.length > 0">
         <thead>
             <tr>

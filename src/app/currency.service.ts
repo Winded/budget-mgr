@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 export enum CurrencyType {
   USD,
@@ -13,7 +14,7 @@ export type CurrencyChangeCallback = (currency: CurrencyType) => void;
 export class CurrencyService {
   private _currencyType: CurrencyType = CurrencyType.USD;
 
-  private _subscriptions: Array<CurrencyChangeCallback> = [];
+  private _onCurrencyChanged = new Subject<CurrencyType>();
 
   constructor() {
     const savedCurrencyType = window.localStorage.getItem('Currency');
@@ -29,13 +30,11 @@ export class CurrencyService {
   set currencyType(newType: CurrencyType) {
     this._currencyType = newType;
     window.localStorage.setItem('Currency', this._currencyType.toString());
-    for (let sub of this._subscriptions) {
-      sub(newType);
-    }
+    this._onCurrencyChanged.next(newType);
   }
 
-  get subscriptions(): Array<CurrencyChangeCallback> {
-    return this._subscriptions;
+  get onCurrencyChange(): Observable<CurrencyType> {
+    return this._onCurrencyChanged;
   }
 
   format(amount: number): string {

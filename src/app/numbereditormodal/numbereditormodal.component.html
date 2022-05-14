@@ -1,3 +1,3 @@
-<app-modalcontainer>
+<app-modalcontainer [title]="title" [visible]="visible" (onSave)="save()">
     <input type="number" class="form-control" placeholder="Value" [(ngModel)]="value">
 </app-modalcontainer>

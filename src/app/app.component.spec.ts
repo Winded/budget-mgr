@@ -2,7 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BudgetData } from './budgetdata';
 import { BudgetDataSourceService } from './budgetdatasource.service';
+import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
+import { BudgetEntryTableComponent } from './budgetentrytable/budgetentrytable.component';
 import { CurrencyPipe } from './currency.pipe';
+import { CurrencyMenuComponent } from './currencymenu/currencymenu.component';
+import { ModalContainerComponent } from './modalcontainer/modalcontainer.component';
+import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
 
 describe('AppComponent', () => {
   const budgetData: BudgetData = {
@@ -34,7 +39,12 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        CurrencyPipe
+        CurrencyPipe,
+        NumberEditorModalComponent,
+        BudgetEntryEditorComponent,
+        BudgetEntryTableComponent,
+        ModalContainerComponent,
+        CurrencyMenuComponent
       ],
       providers: [
         { provide: BudgetDataSourceService, useValue: budgetDataSource },

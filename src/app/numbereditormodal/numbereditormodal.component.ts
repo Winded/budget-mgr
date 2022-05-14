@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { ModalContainerComponent } from '../modalcontainer/modalcontainer.component';
 
 @Component({
@@ -6,29 +7,40 @@ import { ModalContainerComponent } from '../modalcontainer/modalcontainer.compon
   templateUrl: './numbereditormodal.component.html',
   styleUrls: []
 })
-export class NumberEditorModalComponent implements AfterViewInit {
-  @ViewChild(ModalContainerComponent)
-  private modalContainer!: ModalContainerComponent;
+export class NumberEditorModalComponent {
+  private _title = "";
+  private _visible = false;
 
-  private onSave: () => void = () => {};
+  private _onSave?: Subject<number>;
 
   value: number = 0;
 
   constructor() { }
 
-  ngAfterViewInit(): void {
-    this.modalContainer.onSave = () => this.save();
+  get visible(): boolean {
+    return this._visible;
   }
 
-  open(title: string, value: number, onSave: () => void) {
-    this.modalContainer.open(title);
+  get title(): string {
+    return this._title;
+  }
+
+  open(title: string, value: number): Observable<number> {
+    this._title = title;
+    this._visible = true;
     this.value = value;
-    this.onSave = onSave;
+
+    this._onSave?.complete();
+    this._onSave = new Subject<number>();
+    return this._onSave;
   }
 
-  private save() : void {
-    this.modalContainer.close();
-    this.onSave();
+  save() : void {
+    this._visible = false;
+    if (this._onSave) {
+      this._onSave.next(this.value);
+      this._onSave.complete();
+    }
   }
 
 }

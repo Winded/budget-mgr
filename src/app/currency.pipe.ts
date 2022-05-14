@@ -8,7 +8,7 @@ import { CurrencyService } from './currency.service';
 export class CurrencyPipe implements PipeTransform {
 
   constructor(private _ref: ChangeDetectorRef, private currencyService: CurrencyService) {
-    this.currencyService.subscriptions.push(() => this._ref.markForCheck());
+    this.currencyService.onCurrencyChange.subscribe(() => this._ref.markForCheck());
   }
 
   transform(value: unknown, ...args: unknown[]): unknown {

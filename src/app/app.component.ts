@@ -1,14 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { BudgetData, copyList, sum } from './budgetdata';
+import { BudgetData, sum } from './budgetdata';
 import { BudgetDataSourceService } from './budgetdatasource.service';
 import { BudgetEntryEditorComponent } from './budgetentryeditor/budgetentryeditor.component';
-import { CurrencyService } from './currency.service';
 import { NumberEditorModalComponent } from './numbereditormodal/numbereditormodal.component';
-
-enum BudgetEditorType {
-  Income,
-  Expenses,
-}
 
 @Component({
   selector: 'app-root',
@@ -35,50 +29,30 @@ export class AppComponent implements AfterViewInit {
   }
 
   openIncomeEditor() {
-    this.budgetEntryEditor.open(
-      'Income editor',
-      copyList(this.data!.income),
-      () => this.onBudgetEditorSave(BudgetEditorType.Income)
-    );
+    this.budgetEntryEditor.open('Income editor', this.data!.income).subscribe(data => {
+      this.data!.income = data;
+      this.dataService.save();
+    });
   }
 
   openExpensesEditor() {
-    this.budgetEntryEditor.open(
-      'Expenses editor',
-      copyList(this.data!.expenses),
-      () => this.onBudgetEditorSave(BudgetEditorType.Expenses)
-    );
+    this.budgetEntryEditor.open('Expenses editor', this.data!.expenses).subscribe(data => {
+      this.data!.expenses = data;
+      this.dataService.save();
+    });
   }
 
   openBalanceEditor() {
-    this.numberEditor.open(
-      'Edit balance',
-      this.data!.balance,
-      () => {
-        this.data!.balance = this.numberEditor.value;
-        this.dataService.save();
-      }
-    );
+    this.numberEditor.open('Edit balance', this.data!.balance).subscribe(value => {
+      this.data!.balance = value;
+      this.dataService.save();
+    });
   }
 
   openEmergencyBufferEditor() {
-    this.numberEditor.open(
-      'Edit emergency buffer',
-      this.data!.emergencyBuffer,
-      () => {
-        this.data!.emergencyBuffer = this.numberEditor.value;
-        this.dataService.save();
-      }
-    );
-  }
-
-  private onBudgetEditorSave(editorType: BudgetEditorType): void {
-    let entries = copyList(this.budgetEntryEditor.entries);
-    if (editorType == BudgetEditorType.Income) {
-      this.data!.income = entries;
-    } else if (editorType == BudgetEditorType.Expenses) {
-      this.data!.expenses = entries;
-    }
-    this.dataService.save();
+    this.numberEditor.open('Edit emergency buffer', this.data!.emergencyBuffer).subscribe(value => {
+      this.data!.emergencyBuffer = value;
+      this.dataService.save();
+    });
   }
 }

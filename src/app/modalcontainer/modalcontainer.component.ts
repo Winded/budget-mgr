@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modalcontainer',
@@ -6,31 +6,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class ModalContainerComponent {
-  onSave : CallableFunction = () => {};
+  @Input()
+  visible: boolean = false;
+  @Input()
+  title: string = "Modal";
 
-  private _visible: boolean = false;
-  private _title: string = "Modal";
+  @Output()
+  onSave = new EventEmitter<void>();
 
   constructor() { }
 
-  get visible() {
-    return this._visible;
-  }
-  get title() {
-    return this._title;
-  }
-
-  open(title: string) {
-    this._visible = true;
-    this._title = title;
-  }
-
-  close() {
-    this._visible = false;
-  }
-
   save() {
-    this.onSave();
+    this.onSave.emit();
   }
 
 }
